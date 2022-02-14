@@ -120,14 +120,21 @@ SELECT c.cpf, c.nome, f.cidade, d.nome_departamento from colaboradores c
 INNER JOIN departamentos d on d.codigo = c.cod_dep
 INNER JOIN filiais f on f.id = d.codigo_filial
 ORDER BY f.id, c.nome;
+
+SELECT c.cpf, c.nome, c.dataAdmissao, f.cidade from colaboradores c
+INNER JOIN departamentos d on d.codigo = c.cod_dep
+INNER JOIN filiais f on f.id = d.codigo_filial
+ORDER BY dataAdmissao DESC
+LIMIT 5;
 */
+
 
 
 
 
 SELECT * from colaboradores;
 
-SELECT * FROM departamentos;
+SELECT * FROM filiais;
 
 
 
