@@ -126,14 +126,20 @@ INNER JOIN departamentos d on d.codigo = c.cod_dep
 INNER JOIN filiais f on f.id = d.codigo_filial
 ORDER BY dataAdmissao DESC
 LIMIT 5;
+
+SELECT  d.codigo_filial, f.cidade FROM (
+    SELECT COUNT(cod_dep) FROM colaboradores c
+) c
+INNER JOIN departamentos d on d.codigo = c.cod_dep
+INNER JOIN filiais f on f.id=d.codigo_filial
+where d.codigo_filial=1;
 */
 
 
 
 
-
-SELECT * from colaboradores;
-
+SELECT * FROM colaboradores;
+SELECT * FROM departamentos;
 SELECT * FROM filiais;
 
 
