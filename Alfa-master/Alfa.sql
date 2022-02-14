@@ -126,9 +126,6 @@ INNER JOIN departamentos d on d.codigo = c.cod_dep
 INNER JOIN filiais f on f.id = d.codigo_filial
 ORDER BY dataAdmissao DESC
 LIMIT 5;
-
-
-*/
 SELECT d.codigo_filial, f.cidade, COUNT(c.cod_dep) AS Contagem FROM colaboradores c
 
 INNER JOIN departamentos d on d.codigo = c.cod_dep
@@ -136,6 +133,13 @@ INNER JOIN filiais f on f.id=d.codigo_filial
 GROUP BY d.codigo_filial, f.cidade
 ORDER BY d.codigo_filial;
 
+*/
+
+SELECT c.cod_dep, d.nome_departamento, AVG(c.salario) AS Contagem FROM colaboradores c
+
+INNER JOIN departamentos d on d.codigo = c.cod_dep
+GROUP BY c.cod_dep, d.nome_departamento, d.codigo_filial
+ORDER BY d.codigo_filial;
 
 
 
