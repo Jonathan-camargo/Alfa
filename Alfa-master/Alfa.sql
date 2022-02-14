@@ -127,13 +127,14 @@ INNER JOIN filiais f on f.id = d.codigo_filial
 ORDER BY dataAdmissao DESC
 LIMIT 5;
 
-SELECT  d.codigo_filial, f.cidade FROM (
-    SELECT COUNT(cod_dep) FROM colaboradores c
-) c
+
+*/
+SELECT d.codigo_filial, f.cidade, COUNT(c.cod_dep) AS Contagem FROM colaboradores c
+
 INNER JOIN departamentos d on d.codigo = c.cod_dep
 INNER JOIN filiais f on f.id=d.codigo_filial
-where d.codigo_filial=1;
-*/
+GROUP BY d.codigo_filial, f.cidade
+ORDER BY d.codigo_filial;
 
 
 
