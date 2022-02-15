@@ -133,14 +133,14 @@ INNER JOIN filiais f on f.id=d.codigo_filial
 GROUP BY d.codigo_filial, f.cidade
 ORDER BY d.codigo_filial;
 
+
+SELECT d.nome_departamento, AVG(c.salario) AS Contagem FROM colaboradores c
+
+INNER JOIN departamentos d on d.codigo = c.cod_dep 
+GROUP BY  d.nome_departamento
+ORDER BY d.nome_departamento;
+
 */
-
-SELECT c.cod_dep, d.nome_departamento, AVG(c.salario) AS Contagem FROM colaboradores c
-
-INNER JOIN departamentos d on d.codigo = c.cod_dep
-GROUP BY c.cod_dep, d.nome_departamento, d.codigo_filial
-ORDER BY d.codigo_filial;
-
 
 
 SELECT * FROM colaboradores;
