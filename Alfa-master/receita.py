@@ -1,9 +1,8 @@
 import http.client
 import json
-import string
 import psycopg2
 from operator import length_hint
-from urllib import request
+
 
 conn = http.client.HTTPSConnection("receitaws.com.br")
 
@@ -31,7 +30,10 @@ municipio = (obj['municipio'])
 uf  = (obj['uf'])
 print(obj['cnpj'])
 
-
+''' Adicionei uma cidade por vez dentro do Banco de Dados pois
+    com mais de 3 request, o servidor retornou um erro dizendo que
+    havia várias requisições do mesmo host.
+'''
 
 try:
     connection = psycopg2.connect(user="postgres",
@@ -41,7 +43,7 @@ try:
                                   database="postgres")
     cursor = connection.cursor()
 
-    postgres_insert_query = """ INSERT INTO filiais2 (cnpj,nome,cidade,estado) VALUES (%s,%s,%s,%s)"""
+    postgres_insert_query = """ INSERT INTO filiais_auto (cnpj,nome,cidade,estado) VALUES (%s,%s,%s,%s)"""
     record_to_insert = (cnpj,nome,municipio,uf)
     cursor.execute(postgres_insert_query, record_to_insert)
 
