@@ -1,6 +1,9 @@
 import http.client
-import string
 import json
+import string
+import psycopg2
+from operator import length_hint
+from urllib import request
 
 conn = http.client.HTTPSConnection("receitaws.com.br")
 
@@ -21,11 +24,41 @@ conn.request("GET", cnpj_cacador, headers=headers)
 
 res = conn.getresponse()
 data = res.read()
-
-#print(data.decode("utf-8"))
-
 obj = json.loads(data.decode("utf-8"))
+cnpj = (obj['cnpj'])
+nome = (obj['nome'])
+municipio = (obj['municipio'])
+uf  = (obj['uf'])
 print(obj['cnpj'])
+
+
+
+try:
+    connection = psycopg2.connect(user="postgres",
+                                  password="123456",
+                                  host="127.0.0.1",
+                                  port="5432",
+                                  database="postgres")
+    cursor = connection.cursor()
+
+    postgres_insert_query = """ INSERT INTO filiais2 (cnpj,nome,cidade,estado) VALUES (%s,%s,%s,%s)"""
+    record_to_insert = (cnpj,nome,municipio,uf)
+    cursor.execute(postgres_insert_query, record_to_insert)
+
+    connection.commit()
+    count = cursor.rowcount
+    print(count, "Record inserted successfully into mobile table")
+
+except (Exception, psycopg2.Error) as error:
+    print("Failed to insert record into mobile table", error)
+
+finally:
+    # closing database connection.
+    if connection:
+        cursor.close()
+        connection.close()
+        print("PostgreSQL connection is closed")
+
 ''' 
 conn.request("GET", cnpj_curitiba, headers=headers)
 

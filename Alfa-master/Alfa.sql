@@ -4,8 +4,8 @@ Exercício 1:
 CREATE TABLE filiais ( id int GENERATED ALWAYS AS IDENTITY,
 cnpj VARCHAR(14),
 nome VARCHAR(50),
-cidade VARCHAR(30), e
-stado VARCHAR(20),
+cidade VARCHAR(30), 
+estado VARCHAR(20),
 PRIMARY KEY(id) );
 
 Exercício 2:
@@ -184,12 +184,21 @@ INNER JOIN departamentos d on d.codigo = c.cod_dep
 GROUP BY  d.nome_departamento
 ORDER BY d.nome_departamento;
 
+
+Exercício Extra:
+
+CREATE TABLE filiais_auto ( id int GENERATED ALWAYS AS IDENTITY,
+cnpj VARCHAR(18),
+nome VARCHAR(50),
+cidade VARCHAR(30), 
+estado VARCHAR(20),
+PRIMARY KEY(id) );
 */
-SELECT *FROM colaboradores;
 
 
-SELECT *FROM departamentos;
 
 
-SELECT *FROM filiais;
+
+
+SELECT *FROM filiais_auto;
 
