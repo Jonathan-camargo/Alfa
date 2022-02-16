@@ -1,6 +1,6 @@
 import http.client
-from operator import length_hint
 import string
+import json
 
 conn = http.client.HTTPSConnection("receitaws.com.br")
 
@@ -22,8 +22,11 @@ conn.request("GET", cnpj_cacador, headers=headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+#print(data.decode("utf-8"))
 
+obj = json.loads(data.decode("utf-8"))
+print(obj['cnpj'])
+''' 
 conn.request("GET", cnpj_curitiba, headers=headers)
 
 
@@ -81,7 +84,7 @@ res = conn.getresponse()
 data = res.read()
 
 print(data.decode("utf-8"))
-
+'''
 
 
 
