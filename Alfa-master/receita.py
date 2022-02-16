@@ -63,62 +63,43 @@ finally:
 
 ''' 
 conn.request("GET", cnpj_curitiba, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+
 conn.request("GET", cnpj_guarulhos, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+
 conn.request("GET", cnpj_betim, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+
 conn.request("GET", cnpj_cachoeirinha, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
-
-print(data.decode("utf-8"))
 
 conn.request("GET", cnpj_lagoas, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
 conn.request("GET", cnpj_goiania, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+
 conn.request("GET", cnpj_serra, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+
 conn.request("GET", cnpj_rj, headers=headers)
-
-
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+
 '''
 
 
